@@ -511,23 +511,37 @@ def total_pedido():
     if(refri != ''):
         print('refri:')
         print(refri)
+    print('Valor total: R$ {}'.format(valor_total(tamanho,sabores,borda,refri)))
     answer = int(input('O seu pedido está correto?\n(1) SIM\n(2) NÃO\n'))
     if answer == 1:
         return payment()
     else:
         return alteracao_pedido()
 
-
+def valor_total(tamanho,sabores,borda,refri):
+    vl_total = 0.0
+    if(tamanho == 'Pequena'):
+        vl_total += 15.00
+    elif (tamanho == 'Media'):
+        vl_total += 20.00
+    elif (tamanho == 'Grande'):
+        vl_total += 25.00
+    if(borda != ''):
+        vl_total+=1 
+    if(refri != ''):
+        vl_total+=7.00
+    return vl_total  
 def payment():
 
     opt_payment = int(
         input('Qual a forma de pagamento:\n(1) Dinheiro\n(2) Cartão\n'))
     if opt_payment == 1:
         pay_back = input('Deseja troco?\n(1) SIM\n(2) NÃO\n')
-        if pay_back == 1:
+        if pay_back == '1':
             print('Para quanto deseja o troco?')
-            client_money = int(input())
-            return(client_money - total_pedido)
+            client_money = float(input())
+            print('O troco será: R${}'.format(client_money - (valor_total(tamanho,sabores,borda,refri))))
+            print('Agradecemos sua preferência!')
     else:
         print('O motoboy levará a máquineta para o pagamento no ato da entrega!')
         print('Agradecemos sua preferência!')
