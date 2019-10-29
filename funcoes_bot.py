@@ -4,9 +4,9 @@ def saudacao():
     while(True):
         print('{}, digite o numero referente a opção desejada:'.format(nome))
         print('\n')
-        print('1 - Novo pedido')
-        print('2 - Alteração de pedido')
-        print('3 - Mais opções')
+        print('(1) - Novo pedido')
+        print('(2) - Alteração de pedido')
+        print('(3) - Mais opções')
         op = int(input())
         if(op == 1):
             return novo_pedido()
@@ -26,9 +26,9 @@ def novo_pedido():
     # Tratamento de decisoes no pedido
     while(True):
         print('Qual o tamanho da sua pizza?\n'
-              '1.  PEQUENA\n'
-              '2.  MÉDIA\n'
-              '3.  GRANDE')
+              '(1).  PEQUENA\n'
+              '(2).  MÉDIA\n'
+              '(3).  GRANDE')
 
         option = input()
         if option.isnumeric():
@@ -80,9 +80,9 @@ def alteracao_pedido():
     global sabores
     print('O que você deseja alterar?\nDigite o numero referente a opção desejada')
 
-    print('1 - Alterar tamanho')
-    print('2 - Alterar sabores')
-    print('3 - Alterar extras')
+    print('(1) - Alterar tamanho')
+    print('(2) - Alterar sabores')
+    print('(3) - Alterar extras')
     op = input()
     if(op == '1'):
         return alterar_tamanho()
@@ -98,16 +98,16 @@ def alteracao_pedido():
 def alterar_tamanho():
     global tamanho
     print('Para qual tamanho deseja alterar? Digite a opção desejada:')
-    print('1 - P\n2 - M\n3 - G')
+    print('1 - Pequena\n2 - Média\n3 - Grande')
     op = input()
     if(op == '1'):
-        tamanho = 'P'
+        tamanho = 'Pequena'
         return
     elif(op == '2'):
-        tamanho = 'M'
+        tamanho = 'Media'
         return
     elif(op == '3'):
-        tamanho = 'G'
+        tamanho = 'Grande'
         return
     else:
         print('Essa opção não existe')
@@ -146,9 +146,9 @@ def alterar_sabores(tamanho):
             print('Você quer alterar qual sabor:')
             saborum = int(sabores[0])
             sabordois = int(sabores[1])
-            print('1 - {} '.format(menu[saborum]))
-            print('2 - {} '.format(menu[sabordois]))
-            print('3 - Os dois sabores')
+            print('(1) - {} '.format(menu[saborum]))
+            print('(2) - {} '.format(menu[sabordois]))
+            print('(3) - Os dois sabores')
             op = input()
             if(op == '1'):
                 show_cardapio()
@@ -210,9 +210,9 @@ def alterar_sabores(tamanho):
             print('Você quer alterar qual sabor:')
             saborum = int(sabores[0])
             sabordois = int(sabores[1])
-            print('1 - {} '.format(menu[saborum]))
-            print('2 - {} '.format(menu[sabordois]))
-            print('3 - OS DOIS SABORES')
+            print('(1) - {} '.format(menu[saborum]))
+            print('(2) - {} '.format(menu[sabordois]))
+            print('(3) - OS DOIS SABORES')
             op = input()
             if(op == '1'):
                 show_cardapio()
@@ -264,10 +264,10 @@ def alterar_sabores(tamanho):
             saborum = int(sabores[0])
             sabordois = int(sabores[1])
             sabortres = int(sabores[2])
-            print('1 - {} '.format(menu[saborum]))
-            print('2 - {} '.format(menu[sabordois]))
-            print('3 - {} '.format(menu[sabortres]))
-            print('4 - OS TRÊS SABORES')
+            print('(1) - {} '.format(menu[saborum]))
+            print('(2) - {} '.format(menu[sabordois]))
+            print('(3) - {} '.format(menu[sabortres]))
+            print('(4) - OS TRÊS SABORES')
             op = input()
             if(op == '1'):
                 show_cardapio()
@@ -326,7 +326,22 @@ def alterar_sabores(tamanho):
 
 
 def mais_opcoes():
-    print('Essa é a opção mais opções')
+    print('Mais Opções')
+    print('\n')
+    while(True):
+        print('digite o numero referente a opção desejada:')
+        print('\n')
+        print('1 - Falar com Atendente Humana')
+        print('2 - Voltar para as opções')
+        op = int(input())
+        if(op == 1):
+            print('Essa opção - fala com a Atendente Humana')
+            return saudacao()
+        elif(op == 2):
+            return saudacao()
+        else:
+            print('Essa opção não é válida')
+            return mais_opcoes()
 
 
 def alterar_extras():
@@ -452,19 +467,27 @@ def more_options():
     global refrigerante
     global borda
     global refri
-    opt_border = int(input('Deseja adicionar borda?\n(1) SIM\n(2) NÃO'))
+    opt_border = int(input('Deseja adicionar borda?\n(1) SIM\n(2) NÃO\n'))
     if opt_border == 1:
         print('Escolha o recheio da borda:')
         for i in range(len(borders)):
             print(i, borders[i])
-        borda = int(input())
+        b = int(input())
+        if b >= 0 and b < len(borders):
+            borda = borders[b]
+        else:
+            print('Essa opção de borda não existe')
     more_add = int(
-        input('Deseja adicionar alguma bebida ao seu pedido?\n(1) SIM\n(2) NÃO'))
+        input('Deseja adicionar alguma bebida ao seu pedido?\n(1) SIM\n(2) NÃO\n'))
     if more_add == 1:
         print('Escolha o seu refrigerante:')
         for i in range(len(refrigerante)):
             print(i, refrigerante[i])
-        refri = int(input())
+        r = int(input())
+        if r >= 0 and r < len(borders):
+            refri = refrigerante[r]
+        else:
+            print('Essa opção de borda não existe')
     return total_pedido()
 
 
@@ -482,7 +505,13 @@ def total_pedido():
     for i in sabores:
         j = int(i)
         print('{} '.format(menu[j]))
-    answer = int(input('O seu pedido está correto?\n(1) SIM\n(2) NÃO'))
+    if(borda != ''):
+        print('Borda:')
+        print(borda)
+    if(refri != ''):
+        print('refri:')
+        print(refri)
+    answer = int(input('O seu pedido está correto?\n(1) SIM\n(2) NÃO\n'))
     if answer == 1:
         return payment()
     else:
@@ -492,9 +521,9 @@ def total_pedido():
 def payment():
 
     opt_payment = int(
-        input('Qual a forma de pagamento:\n(1) Dinheiro\n(2) Cartão'))
+        input('Qual a forma de pagamento:\n(1) Dinheiro\n(2) Cartão\n'))
     if opt_payment == 1:
-        pay_back = input('Deseja troco?\n(1) SIM\n(2) NÃO')
+        pay_back = input('Deseja troco?\n(1) SIM\n(2) NÃO\n')
         if pay_back == 1:
             print('Para quanto deseja o troco?')
             client_money = int(input())
@@ -528,6 +557,8 @@ menu = {
 }
 tamanho = ''
 sabores = []
+borda = ''
+refri = ''
 borders = ['Catupiry', 'Cheddar', 'Calabresa', 'Queijo', 'Nutela']
 refrigerante = ['Coca-cola', 'Fanta', 'Sprite', 'Kuat', 'Guaraná Antartica']
 saudacao()
