@@ -1,3 +1,8 @@
+import wppbot
+import time
+bot = wppbot.wppbot('Robot')
+
+
 def saudacao():
     print('Olá, digite seu nome: ')
     nome = input()
@@ -511,14 +516,16 @@ def total_pedido():
     if(refri != ''):
         print('refri:')
         print(refri)
-    print('Valor total: R$ {}'.format(valor_total(tamanho,sabores,borda,refri)))
+    print('Valor total: R$ {}'.format(
+        valor_total(tamanho, sabores, borda, refri)))
     answer = int(input('O seu pedido está correto?\n(1) SIM\n(2) NÃO\n'))
     if answer == 1:
         return payment()
     else:
         return alteracao_pedido()
 
-def valor_total(tamanho,sabores,borda,refri):
+
+def valor_total(tamanho, sabores, borda, refri):
     vl_total = 0.0
     if(tamanho == 'Pequena'):
         vl_total += 15.00
@@ -527,10 +534,12 @@ def valor_total(tamanho,sabores,borda,refri):
     elif (tamanho == 'Grande'):
         vl_total += 25.00
     if(borda != ''):
-        vl_total+=1 
+        vl_total += 1
     if(refri != ''):
-        vl_total+=7.00
-    return vl_total  
+        vl_total += 7.00
+    return vl_total
+
+
 def payment():
 
     opt_payment = int(
@@ -540,7 +549,8 @@ def payment():
         if pay_back == '1':
             print('Para quanto deseja o troco?')
             client_money = float(input())
-            print('O troco será: R${}'.format(client_money - (valor_total(tamanho,sabores,borda,refri))))
+            print('O troco será: R${}'.format(client_money -
+                                              (valor_total(tamanho, sabores, borda, refri))))
             print('Agradecemos sua preferência!')
     else:
         print('O motoboy levará a máquineta para o pagamento no ato da entrega!')
@@ -575,4 +585,14 @@ borda = ''
 refri = ''
 borders = ['Catupiry', 'Cheddar', 'Calabresa', 'Queijo', 'Nutela']
 refrigerante = ['Coca-cola', 'Fanta', 'Sprite', 'Kuat', 'Guaraná Antartica']
-saudacao()
+
+bot.inicia()
+i = 0
+while(True):
+    texto = bot.escuta()
+    print(texto)
+
+    i += 1
+    print(i)
+    time.sleep(5)
+# saudacao()
