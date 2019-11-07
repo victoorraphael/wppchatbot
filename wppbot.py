@@ -36,3 +36,4 @@ class wppbot:
             return post
         except:
             return 'ainda nada encontrado'
+    

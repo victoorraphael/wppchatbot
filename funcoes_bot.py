@@ -9,7 +9,7 @@ def saudacao():
     while(True):
         print('{}, digite o numero referente a opção desejada:'.format(nome))
         print('\n')
-        print('(1) - Novo pedido')
+        print('(1) - Novo pedido')              
         print('(2) - Alteração de pedido')
         print('(3) - Mais opções')
         op = int(input())
