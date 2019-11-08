@@ -32,8 +32,21 @@ class wppbot:
             # post = self.driver.find_element_by_xpath(
             #     '//*[@id="main"]/div[3]/div/div/div[3]/div[16]/div/div/div/div[1]/div/span/span').text
             # //*[@id="main"]/div[3]/div/div/div[3]/div[16]/div/div/div/div[1]/div/span/span
-            post = self.driver.find_element_by_class_name('FTBzM').text
-            return post
+            post = self.driver.find_elements_by_class_name('FTBzM')
+            ultimo = len(post) - 1
+            #Vamos pegar o  texto da última conversa e retornar.
+            texto = post[ultimo].find_element_by_css_selector('span.selectable-text').text
+            return texto
         except:
             return 'ainda nada encontrado'
     
+    def responde(self):
+    #def responde(self,texto):
+        
+        response = 'Olá, eu sou o Darvin e estou funcionando!'
+        #Setamos caixa de mensagens preenchemos com a resposta e clicamos em enviar.
+        self.caixa_de_mensagem = self.driver.find_element_by_class_name('_3FeAD')
+        self.caixa_de_mensagem.send_keys(response)
+        time.sleep(1)
+        self.botao_enviar = self.driver.find_element_by_class_name('_3M-N-')
+        self.botao_enviar.click()

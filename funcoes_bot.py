@@ -591,8 +591,8 @@ i = 0
 while(True):
     texto = bot.escuta()
     print(texto)
-
-    i += 1
-    print(i)
+    if(texto == 'Fala bot!'):
+        bot.responde()
+        print("Entrei aqui")
     time.sleep(10)
 # saudacao()
