@@ -1,26 +1,37 @@
 import wppbot
 import time
+import re
 bot = wppbot.wppbot('Robot')
 
 
-def saudacao():
-    print('Olá, digite seu nome: ')
-    nome = input()
+def saudacao(primeiraVez):
+    
+    if(primeiraVez==True):
+        resposta = '#Olá, digite seu nome:'
+        bot.responde(resposta)
+        texto = escuta_resposta(resposta)
+    
     while(True):
-        print('{}, digite o numero referente a opção desejada:'.format(nome))
-        print('\n')
-        print('(1) - Novo pedido')              
-        print('(2) - Alteração de pedido')
-        print('(3) - Mais opções')
-        op = int(input())
-        if(op == 1):
+        if(primeiraVez==True):
+            nome = texto
+            resposta = '#{}, digite o numero referente a opção desejada:'.format(nome)
+        else:
+            resposta = '#Digite o numero referente a opção desejada:'
+        bot.responde(resposta)
+        
+        resposta = '#(1) - Novo pedido\n#(2) - Alteração de pedido\n#(3) - Mais opções'             
+        bot.responde(resposta)
+        op = escuta_resposta('#(3) - Mais opções')
+        
+        if(op == '1'):
             return novo_pedido()
-        elif(op == 2):
+        elif(op == '2'):
             return alteracao_pedido()
-        elif (op == 3):
+        elif (op == '3'):
             return mais_opcoes()
         else:
             print('Essa opção não existe')
+            saudacao(False)
 
 
 def novo_pedido():
@@ -341,9 +352,9 @@ def mais_opcoes():
         op = int(input())
         if(op == 1):
             print('Essa opção - fala com a Atendente Humana')
-            return saudacao()
+            return saudacao(False)
         elif(op == 2):
-            return saudacao()
+            return saudacao(False)
         else:
             print('Essa opção não é válida')
             return mais_opcoes()
@@ -557,6 +568,13 @@ def payment():
         print('Agradecemos sua preferência!')
 
 
+def escuta_resposta(resposta):
+    while(True):
+        texto = bot.escuta()
+        #re.match(r'^#', resposta)
+        if(texto != resposta):
+            return texto
+
 menu = {
     1: "AMERICANA",
     2: "APRESUNTADA",
@@ -587,12 +605,10 @@ borders = ['Catupiry', 'Cheddar', 'Calabresa', 'Queijo', 'Nutela']
 refrigerante = ['Coca-cola', 'Fanta', 'Sprite', 'Kuat', 'Guaraná Antartica']
 
 bot.inicia()
-i = 0
 while(True):
-    texto = bot.escuta()
-    print(texto)
+    
+    texto = str(bot.escuta())
     if(texto == 'Fala bot!'):
-        bot.responde()
-        print("Entrei aqui")
-    time.sleep(10)
+        saudacao(True) 
+    time.sleep(5)
 # saudacao()

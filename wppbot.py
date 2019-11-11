@@ -40,10 +40,10 @@ class wppbot:
         except:
             return 'ainda nada encontrado'
     
-    def responde(self):
-    #def responde(self,texto):
+    #def responde(self):
+    def responde(self,resposta):
         
-        response = 'Olá, eu sou o Darvin e estou funcionando!'
+        response = str(resposta)
         #Setamos caixa de mensagens preenchemos com a resposta e clicamos em enviar.
         self.caixa_de_mensagem = self.driver.find_element_by_class_name('_3FeAD')
         self.caixa_de_mensagem.send_keys(response)
