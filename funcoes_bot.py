@@ -370,7 +370,10 @@ def show_cardapio():
     #     resposta = resposta + item 
     # bot.responde(resposta)
     # cardapio.close()
+    time.sleep(5)
     bot.show_cardapio()
+    time.sleep(5)
+
 
 
 def um_sabor(option):

@@ -56,10 +56,13 @@ class wppbot:
         self.botao_anexo = self.driver.find_element_by_css_selector("span[data-icon='clip']")
         #self.driver.findElement(By.cssSelector("span[data-icon='clip']")).click();
         self.botao_anexo.click()
+        self.driver.implicitly_wait(5)
         self.busca_anexo = self.driver.find_element_by_css_selector("input[type='file']")
         # driver.findElement(By.cssSelector("input[type='file']")).sendKeys("FilePath");
         self.dir_path = self.dir_path+"/cardapio.png"
         self.busca_anexo.send_keys(self.dir_path)
+        self.driver.implicitly_wait(5)
         self.enviar_anexo = self.driver.find_element_by_css_selector("span[data-icon='send-light']")
         # driver.findElement(By.cssSelector("span[data-icon='send-light']")).click();
         self.enviar_anexo.click()
+        self.driver.implicitly_wait(5)
