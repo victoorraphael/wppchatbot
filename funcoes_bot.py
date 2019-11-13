@@ -7,21 +7,21 @@ bot = wppbot.wppbot('Robot')
 def saudacao(primeiraVez):
     
     if(primeiraVez==True):
-        resposta = '#Olá, digite seu nome:'
+        resposta = 'Olá, digite seu nome:'
         bot.responde(resposta)
         texto = escuta_resposta(resposta)
     
     while(True):
         if(primeiraVez==True):
             nome = texto
-            resposta = '#{}, digite o numero referente a opção desejada:'.format(nome)
+            resposta = '{}, digite o numero referente a opção desejada:'.format(nome)
         else:
-            resposta = '#Digite o numero referente a opção desejada:'
+            resposta = 'Digite o numero referente a opção desejada:'
         bot.responde(resposta)
         
-        resposta = '#(1) - Novo pedido\n#(2) - Alteração de pedido\n#(3) - Mais opções'             
+        resposta = '(1) - Novo pedido\n(2) - Alteração de pedido\n(3) - Mais opções'             
         bot.responde(resposta)
-        op = escuta_resposta('#(3) - Mais opções')
+        op = escuta_resposta('(3) - Mais opções')
         
         if(op == '1'):
             return novo_pedido()
@@ -41,12 +41,9 @@ def novo_pedido():
 
     # Tratamento de decisoes no pedido
     while(True):
-        print('Qual o tamanho da sua pizza?\n'
-              '(1).  PEQUENA\n'
-              '(2).  MÉDIA\n'
-              '(3).  GRANDE')
-
-        option = input()
+        resposta = 'Qual o tamanho da sua pizza?\n(1).  PEQUENA\n(2).  MÉDIA\n(3).  GRANDE'
+        bot.responde(resposta)
+        option = escuta_resposta('(3).  GRANDE')
         if option.isnumeric():
             option = int(option)
             if option == 1:
@@ -342,21 +339,22 @@ def alterar_sabores(tamanho):
 
 
 def mais_opcoes():
-    print('Mais Opções')
+    resposta = 'Mais Opções'
+    bot.responde(resposta)
     print('\n')
     while(True):
-        print('digite o numero referente a opção desejada:')
-        print('\n')
-        print('1 - Falar com Atendente Humana')
-        print('2 - Voltar para as opções')
-        op = int(input())
+        bot.responde('digite o numero referente a opção desejada:')
+        
+        bot.responde('1 - Falar com Atendente Humana')
+        bot.responde('2 - Voltar para as opções')
+        op = int(escuta_resposta('2 - Voltar para as opções'))
         if(op == 1):
-            print('Essa opção - fala com a Atendente Humana')
+            bot.responde('Essa opção - fala com a Atendente Humana')
             return saudacao(False)
         elif(op == 2):
             return saudacao(False)
         else:
-            print('Essa opção não é válida')
+            bot.responde('Essa opção não é válida')
             return mais_opcoes()
 
 
@@ -365,11 +363,14 @@ def alterar_extras():
 
 
 def show_cardapio():
-    """Mostra o cardapio do estabelecimento, arquivado em um .txt"""
-    cardapio = open('cardapio.txt', 'r')
-    for item in cardapio:
-        print(item)
-    cardapio.close()
+    # """Mostra o cardapio do estabelecimento, arquivado em um .txt"""
+    # cardapio = open('cardapio.txt', 'r')
+    # resposta = ''
+    # for item in cardapio:
+    #     resposta = resposta + item 
+    # bot.responde(resposta)
+    # cardapio.close()
+    bot.show_cardapio()
 
 
 def um_sabor(option):
@@ -385,7 +386,8 @@ def um_sabor(option):
         tamanho = 'Grande'
     show_cardapio()
     while (True):
-        sabor_0 = input('Insira o numero referente ao sabor desejado:\n')
+        bot.responde('Insira o numero referente ao sabor desejado:')
+        sabor_0 = escuta_resposta('Insira o numero referente ao sabor desejado:')
         if sabor_0.isnumeric():
             escolha = int(sabor_0)
             if escolha in menu:
