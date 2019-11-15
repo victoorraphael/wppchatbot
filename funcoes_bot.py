@@ -50,18 +50,19 @@ def novo_pedido():
                 return um_sabor(option)
 
             elif option == 2:
-                opt_sabor = input(
-                    'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n')
+                resposta = 'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n'
+                bot.responde(resposta)
+                opt_sabor = escuta_resposta('(2) 2 Sabores')
                 if opt_sabor == 1:
                     return um_sabor(option)
                 else:
                     return dois_sabores(option)
 
             elif option == 3:
-                opt_sabor = input('Deseja sua pizza com quantos sabores?\n'
-                                  '(1) 1 Sabor\n'
-                                  '(2) 2 Sabores\n'
-                                  '(3) 3 Sabores\n')
+                resposta = 'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n(3) 3 Sabores\n'
+                bot.responde(resposta)
+                opt_sabor = escuta_resposta('(3) 3 Sabores')
+                
                 if option == 1:
                     return um_sabor(option)
                 elif option == 2:
@@ -74,18 +75,25 @@ def novo_pedido():
                 return um_sabor(option)
 
             elif option == 'MEDIA':
-                opt_sabor = input(
-                    'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n')
+                resposta = 'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n'
+                bot.responde(resposta)
+                opt_sabor = escuta_resposta('(2) 2 Sabores')
                 if opt_sabor == 1:
                     return um_sabor(option)
                 else:
                     return dois_sabores(option)
 
             elif option == 'GRANDE':
-                opt_sabor = input('Deseja sua pizza com quantos sabores?\n'
-                                  '(1) 1 Sabor\n'
-                                  '(2) 2 Sabores\n'
-                                  '(3) 3 Sabores\n')
+                resposta = 'Deseja sua pizza com quantos sabores?\n(1) 1 Sabor\n(2) 2 Sabores\n(3) 3 Sabores\n'
+                bot.responde(resposta)
+                opt_sabor = escuta_resposta('(3) 3 Sabores')
+                
+                if option == 1:
+                    return um_sabor(option)
+                elif option == 2:
+                    return dois_sabores(option)
+                elif option == 3:
+                    return tres_sabores()
 
 
 def alteracao_pedido():
@@ -397,7 +405,7 @@ def um_sabor(option):
                 sabores.append(sabor_0)
                 break
         else:
-            print('Ops! Digite apenas o número referente ao sabor:\n')
+            bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
     return more_options()
 
 
@@ -410,19 +418,19 @@ def dois_sabores(option):
         tamanho = 'Media'
     elif option == 3:
         tamanho = 'Grande'
-
+    show_cardapio()
     while (True):
-        show_cardapio()
-        sabor_1 = input(
-            'Insira o numero referente ao primeiro sabor desejado:\n')
+        
+        bot.responde('Insira o numero referente ao primeiro sabor desejado:')
+        sabor_1 = escuta_resposta('Insira o numero referente ao primeiro sabor desejado:')
         # Validando se o valor do sabor_1 eh um numero para poder ser adicionado ao pedido
         if sabor_1.isnumeric():
             escolha = int(sabor_1)
             if escolha in menu:
                 sabores.append(sabor_1)
                 break
-            sabor_2 = input(
-                'Insira o numero referente ao segundo sabor desejado:\n')
+            bot.responde('Insira o numero referente ao segundo sabor desejado:\n')
+            sabor_2 = escuta_resposta('Insira o numero referente ao segundo sabor desejado:')
             # Validando se o valor do sabor_2 eh um numero para poder adicionar ao pedido
             if sabor_2.isnumeric():
                 escolha = int(sabor_2)
@@ -430,9 +438,9 @@ def dois_sabores(option):
                     sabores.append(sabor_2)
                     break
             else:
-                print('Ops! Digite apenas o número referente ao sabor:\n')
+                bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
         else:
-            print('Ops! Digite apenas o número referente ao sabor:\n')
+            bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
         # Condicao de parada do loop
         # if len(sabores) == 2:
         #     more_options()
@@ -448,30 +456,28 @@ def tres_sabores():
     global sabores
     show_cardapio()
     while (True):
-        sabor_1 = input(
-            'Insira o numero referente ao primeiro sabor desejado:\n')
+        bot.responde('Insira o numero referente ao primeiro sabor desejado:')
+        sabor_1 = escuta_resposta('Insira o numero referente ao primeiro sabor desejado:')
         # Validando se o valor do sabor_1 eh um numero para poder ser adicionado ao pedido
         if sabor_1.isnumeric():
             escolha = int(sabor_1)
             if escolha in menu:
                 sabores.append(sabor_1)
                 break
+            bot.responde('Insira o numero referente ao segundo sabor desejado:\n')
+            sabor_2 = escuta_resposta('Insira o numero referente ao segundo sabor desejado:')
+            # Validando se o valor do sabor_2 eh um numero para poder adicionar ao pedido
+            if sabor_2.isnumeric():
+                escolha = int(sabor_2)
+                if escolha in menu:
+                    sabores.append(sabor_2)
+                    break
         else:
-            print('Ops! Digite apenas o número referente ao sabor:\n')
+            bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
     while (True):
-        sabor_2 = input(
-            'Insira o numero referente ao segundo sabor desejado:\n')
-        # Validando se o valor do sabor_1 eh um numero para poder ser adicionado ao pedido
-        if sabor_2.isnumeric():
-            escolha = int(sabor_2)
-            if escolha in menu:
-                sabores.append(sabor_2)
-                break
-        else:
-            print('Ops! Digite apenas o número referente ao sabor:\n')
-    while (True):
-        sabor_3 = input(
-            'Insira o numero referente ao terceiro sabor desejado:\n')
+        bot.responde('Insira o numero referente ao terceiro sabor desejado:')
+        sabor_3 = escuta_resposta('Insira o numero referente ao terceiro sabor desejado:')
+        
         # Validando se o valor do sabor_1 eh um numero para poder ser adicionado ao pedido
         if sabor_3.isnumeric():
             escolha = int(sabor_3)
@@ -479,7 +485,7 @@ def tres_sabores():
                 sabores.append(sabor_3)
                 break
         else:
-            print('Ops! Digite apenas o número referente ao sabor:\n')
+            bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
     return more_options()
 
 
@@ -488,7 +494,9 @@ def more_options():
     global refrigerante
     global borda
     global refri
-    opt_border = int(input('Deseja adicionar borda?\n(1) SIM\n(2) NÃO\n'))
+    
+    bot.responde('Deseja adicionar borda?\n(1) SIM\n(2) NÃO\n')
+    opt_border = int(escuta_resposta('(2) NÃO'))
     if opt_border == 1:
         print('Escolha o recheio da borda:')
         for i in range(len(borders)):
