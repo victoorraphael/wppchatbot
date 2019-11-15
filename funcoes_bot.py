@@ -498,7 +498,7 @@ def more_options():
     bot.responde('Deseja adicionar borda?\n(1) SIM\n(2) NÃO\n')
     opt_border = int(escuta_resposta('(2) NÃO'))
     if opt_border == 1:
-        print('Escolha o recheio da borda:')
+        bot.responde('Escolha o recheio da borda:')
         for i in range(len(borders)):
             print(i, borders[i])
         b = int(input())
