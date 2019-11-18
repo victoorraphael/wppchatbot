@@ -1,3 +1,12 @@
-2019/11/15-02:20:19.838 4e5b Reusing MANIFEST /home/erickleandro/Documentos/wppchatbot/profile/wpp/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2019/11/15-02:20:19.839 4e5b Recovering log #11
-2019/11/15-02:20:19.853 4e5b Reusing old log /home/erickleandro/Documentos/wppchatbot/profile/wpp/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000011.log 
+2019/11/17-02:56:48.494 61a3 Reusing MANIFEST /home/erickleandro/Documentos/wppchatbot/profile/wpp/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2019/11/17-02:56:48.494 61a3 Recovering log #11
+2019/11/17-02:56:48.658 61a3 Reusing old log /home/erickleandro/Documentos/wppchatbot/profile/wpp/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000011.log 
+2019/11/17-02:57:37.931 62a8 Level-0 table #16: started
+2019/11/17-02:57:38.119 62a8 Level-0 table #16: 1268511 bytes OK
+2019/11/17-02:57:38.252 62a8 Delete type=0 #11
+2019/11/17-02:57:43.605 62a8 Compacting 1@1 + 1@2 files
+2019/11/17-02:57:43.915 62a8 Generated table #17@1: 35030 keys, 1381725 bytes
+2019/11/17-02:57:43.915 62a8 Compacted 1@1 + 1@2 files => 1381725 bytes
+2019/11/17-02:57:43.952 62a8 compacted to: files[ 0 0 1 0 0 0 0 ]
+2019/11/17-02:57:43.952 62a8 Delete type=2 #13
+2019/11/17-02:57:43.952 62a8 Delete type=2 #16

@@ -357,7 +357,7 @@ def mais_opcoes():
         bot.responde('2 - Voltar para as opções')
         op = int(escuta_resposta('2 - Voltar para as opções'))
         if(op == 1):
-            bot.responde('Essa opção - fala com a Atendente Humana')
+            bot.responde('Aguarde, a atendente humana entrará já falará com você.')
             return saudacao(False)
         elif(op == 2):
             return saudacao(False)
@@ -464,14 +464,16 @@ def tres_sabores():
             if escolha in menu:
                 sabores.append(sabor_1)
                 break
-            bot.responde('Insira o numero referente ao segundo sabor desejado:\n')
-            sabor_2 = escuta_resposta('Insira o numero referente ao segundo sabor desejado:')
+        
+
+        bot.responde('Insira o numero referente ao segundo sabor desejado:\n')
+        sabor_2 = escuta_resposta('Insira o numero referente ao segundo sabor desejado:')
             # Validando se o valor do sabor_2 eh um numero para poder adicionar ao pedido
-            if sabor_2.isnumeric():
-                escolha = int(sabor_2)
-                if escolha in menu:
-                    sabores.append(sabor_2)
-                    break
+        if sabor_2.isnumeric():
+            escolha = int(sabor_2)
+            if escolha in menu:
+                sabores.append(sabor_2)
+                break
         else:
             bot.responde('Ops! Digite apenas o número referente ao sabor:\n')
     while (True):
@@ -500,23 +502,26 @@ def more_options():
     if opt_border == 1:
         bot.responde('Escolha o recheio da borda:')
         for i in range(len(borders)):
-            print(i, borders[i])
-        b = int(input())
+            resposta = '({}) - {}'.format(i,borders[i])
+            bot.responde(resposta)
+        b = int(escuta_resposta(resposta))
         if b >= 0 and b < len(borders):
             borda = borders[b]
         else:
-            print('Essa opção de borda não existe')
-    more_add = int(
-        input('Deseja adicionar alguma bebida ao seu pedido?\n(1) SIM\n(2) NÃO\n'))
-    if more_add == 1:
-        print('Escolha o seu refrigerante:')
+            bot.responde('Essa opção de borda não existe')
+    
+    bot.responde('Deseja adicionar alguma bebida ao seu pedido?\n(1) SIM\n(2) NÃO\n')
+    more_add = int(escuta_resposta('(2) NÃO)'))
+    if(more_add == 1):
+        bot.responde('Escolha o seu refrigerante:')
         for i in range(len(refrigerante)):
-            print(i, refrigerante[i])
+            resposta = '({}) - {}'.format(i,refrigerante[i])
+            bot.responde(resposta)
         r = int(input())
         if r >= 0 and r < len(borders):
             refri = refrigerante[r]
         else:
-            print('Essa opção de borda não existe')
+            bot.responde('Essa opção de borda não existe')
     return total_pedido()
 
 
@@ -528,21 +533,22 @@ def total_pedido():
     global refrigerante
     global refri
     global menu
-    print('Por favor, confirme seu pedido:')
-    print('Pizza tamanho: {}'.format(tamanho))
-    print('Sabores:')
+    bot.responde('Por favor, confirme seu pedido:')
+    bot.responde('Pizza tamanho: {}'.format(tamanho))
+    bot.responde('Sabores:')
     for i in sabores:
         j = int(i)
-        print('{} '.format(menu[j]))
+        bot.responde('{} '.format(menu[j]))
     if(borda != ''):
-        print('Borda:')
-        print(borda)
+        bot.responde('Borda:')
+        bot.responde(borda)
     if(refri != ''):
-        print('refri:')
-        print(refri)
-    print('Valor total: R$ {}'.format(
+        bot.responde('refri:')
+        bot.responde(refri)
+    bot.responde('Valor total: R$ {}'.format(
         valor_total(tamanho, sabores, borda, refri)))
-    answer = int(input('O seu pedido está correto?\n(1) SIM\n(2) NÃO\n'))
+    bot.responde('O seu pedido está correto?\n(1) SIM\n(2) NÃO\n')
+    answer = int(escuta_resposta('(2) NÃO'))
     if answer == 1:
         return payment()
     else:

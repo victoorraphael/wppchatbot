@@ -1,13 +1,6 @@
-[20778:20778:1115/022905.928804:ERROR:sandbox_linux.cc(369)] InitializeSandbox() called with multiple threads in process gpu-process.
-[20778:20778:1115/022906.125756:ERROR:buffer_manager.cc(488)] [.DisplayCompositor]GL ERROR :GL_INVALID_OPERATION : glBufferData: <- error from previous GL command
-[20844:1:1115/022907.016833:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
-[20844:1:1115/022907.017786:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
-[20743:20743:1115/031453.460962:ERROR:zygote_communication_linux.cc(276)] Failed to send GetTerminationStatus message to zygote
-[20743:20743:1115/031453.461031:WARNING:zygote_communication_linux.cc(288)] Socket closed prematurely.
-[20743:20743:1115/031453.464428:ERROR:zygote_communication_linux.cc(276)] Failed to send GetTerminationStatus message to zygote
-[20743:20743:1115/031453.464473:WARNING:zygote_communication_linux.cc(288)] Socket closed prematurely.
-[20743:20743:1115/031453.555699:ERROR:zygote_communication_linux.cc(276)] Failed to send GetTerminationStatus message to zygote
-[20743:20743:1115/031453.555754:WARNING:zygote_communication_linux.cc(288)] Socket closed prematurely.
-[22219:22219:1115/031453.651264:ERROR:sandbox_linux.cc(369)] InitializeSandbox() called with multiple threads in process gpu-process.
-[20743:20743:1115/031453.946121:WARNING:pref_notifier_impl.cc(40)] Pref observer for browser.relaunch_notification_period found at shutdown.
-[20743:20743:1115/031453.946209:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[25473:25473:1117/030231.429632:ERROR:sandbox_linux.cc(369)] InitializeSandbox() called with multiple threads in process gpu-process.
+[25473:25473:1117/030231.743996:ERROR:buffer_manager.cc(488)] [.DisplayCompositor]GL ERROR :GL_INVALID_OPERATION : glBufferData: <- error from previous GL command
+[25546:1:1117/030232.224908:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+[25546:1:1117/030232.225709:ERROR:child_process_sandbox_support_impl_linux.cc(81)] FontService unique font name matching request did not receive a response.
+[25440:25440:1117/030441.318548:WARNING:pref_notifier_impl.cc(40)] Pref observer for browser.relaunch_notification_period found at shutdown.
+[25440:25440:1117/030441.342641:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
