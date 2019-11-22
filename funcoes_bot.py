@@ -629,5 +629,9 @@ while(True):
     texto = str(bot.escuta())
     if(texto == 'Fala bot!'):
         saudacao(True) 
-    time.sleep(5)
+    
+    # bot.verifica_converca()
+    # # if(bot.verifica_converca()):
+    # #     saudacao(True)
+    # time.sleep(5)
 # saudacao()

@@ -24,6 +24,21 @@ class wppbot:
         self.driver.get('https://web.whatsapp.com/')
         self.driver.implicitly_wait(15)
 
+    def verifica_converca(self):
+        try:
+            inicia = self.driver.find_elements_by_class_name('_19RFN')
+            texto = inicia[1].find_element_by_class_name('_19RFN').text
+            print(texto)
+            if (texto == 'Fala bot!'):
+                self.primeira_converca = self.driver.find_element_by_class_name('_19RFN')
+                self.primeira_converca.click()
+                print('True')
+                #return True
+            
+        except: 
+            print('Nada Encontrado ou erro')
+            self.verifica_converca()
+    
     def escuta(self):
         
         try:
