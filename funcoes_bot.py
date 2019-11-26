@@ -6,6 +6,8 @@ bot = wppbot.wppbot('Robot')
 
 def saudacao(primeiraVez):
     
+    print('ola amigo!')
+
     if(primeiraVez==True):
         resposta = 'Olá, digite seu nome:'
         bot.responde(resposta)
