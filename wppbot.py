@@ -1,7 +1,7 @@
 import os
 import time
 import re
-import urllib.request
+#import urllib.request
 from selenium import webdriver
 from bs4 import BeautifulSoup
 

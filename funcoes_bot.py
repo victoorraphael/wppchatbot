@@ -1,12 +1,21 @@
 import wppbot
 import time
 import re
+import os
+import os.path
+from datetime import datetime
+
+now = datetime.now()
 bot = wppbot.wppbot('Robot')
 
 
 def saudacao(primeiraVez):
     
-    print('ola amigo!')
+    global nome
+    global day
+    global month
+    global year
+    
 
     if(primeiraVez==True):
         resposta = 'Olá, digite seu nome:'
@@ -16,8 +25,49 @@ def saudacao(primeiraVez):
     while(True):
         if(primeiraVez==True):
             nome = texto
+            arquivo = '{}.txt'.format(nome)
+
+            caminho = '/home/raphael/Google Drive/The Bots/wppchatbot/'
+
+            verifica = caminho+arquivo
+
+            check = os.path.exists(verifica)
+
+            if check:
+                cria = open (arquivo, 'a')
+                msg = 'Bom te ver de volta!'
+                bot.responde(msg)
+                cria.write('novo')
+                cria.close()
+            else:
+                
+                cria = open (arquivo, 'a')
+                cria.write('novo')
+                cria.close()
             resposta = '{}, digite o numero referente a opção desejada:'.format(nome)
+            
         else:
+            nome = texto
+            arquivo = '{}.txt'.format(nome)
+
+            caminho = '/home/raphael/Google Drive/The Bots/wppchatbot/'
+
+            verifica = caminho+arquivo
+
+            check = os.path.exists(verifica)
+
+            if check:
+                cria = open (arquivo, 'a')
+                msg = 'Bom te ver de volta!'
+                bot.responde(msg)
+                cria.write('novo')
+                cria.close()
+            else:
+                
+                cria = open (arquivo, 'a')
+                cria.write('novo')
+                cria.close()
+            
             resposta = 'Digite o numero referente a opção desejada:'
         bot.responde(resposta)
         
@@ -26,6 +76,7 @@ def saudacao(primeiraVez):
         op = escuta_resposta('(3) - Mais opções')
         
         if(op == '1'):
+            
             return novo_pedido()
         elif(op == '2'):
             return alteracao_pedido()
@@ -619,6 +670,10 @@ menu = {
     20: "ALICHE"
 }
 tamanho = ''
+nome = ''
+day = now.day
+month = now.month
+year = now.year
 sabores = []
 borda = ''
 refri = ''
